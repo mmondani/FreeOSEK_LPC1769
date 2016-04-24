@@ -7,7 +7,7 @@ static void* ioGPIO_dtor (void* _this);
 static uint32_t ioGPIO_differ (void* _this, void* _dst);
 static void ioGPIO_display (void* _this);
 static void* ioGPIO_copy (void* _this, void* _src);
-static uint32_t ioGPIO_init (void* _this, va_list* va);
+static uint32_t ioGPIO_init (void* _this);
 static uint32_t ioGPIO_deInit (void* _this);
 static uint32_t ioGPIO_enable (void* _this);
 static uint32_t ioGPIO_disable (void* _this);
@@ -90,7 +90,7 @@ static void* ioGPIO_copy (void* _this, void* _src)
 }
 
 
-static uint32_t ioGPIO_init (void* _this, va_list* va)
+static uint32_t ioGPIO_init (void* _this)
 {
 	return 0;
 }
