@@ -5,13 +5,11 @@
 
 
 
-enum {LOW = 0, HIGH};
-enum {INPUT = 0, OUTPUT};
 
 // ********************************************************************************
 // Instanciación de ioDigital
 //
-// void* digital = cObject_new(ioDigital, periphMem, direction, activeState, port, pin)
+// void* digitalPin = cObject_new(ioDigital, periphMem, direction, port, pin)
 // ********************************************************************************
 extern const void* ioDigital;
 
@@ -20,7 +18,15 @@ extern const void* ioDigital;
 // ********************************************************************************
 // Métodos públicos de la clase ioDigital : ioGPIO
 // ********************************************************************************
-uint32_t ioDigital_isActive (void* _this);
+
+/*
+ * ioDigital_toggle
+ *
+ * Hace un toggle del estado del pin digital (si es salida).
+ *
+ * 	-> _this: pin digital.
+ *
+ */
 void ioDigital_toggle (void* _this);
 // ********************************************************************************
 

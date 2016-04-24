@@ -43,7 +43,6 @@ static void* ioGPIO_ctor  (void* _this, va_list* va)
 
 	this->periphMem = va_arg(*va, void*);
 	this->direction = va_arg(*va, uint32_t);
-	this->activeLevel = va_arg(*va, uint32_t);
 	this->port = va_arg(*va, uint32_t);
 	this->pin = va_arg(*va, uint32_t);
 
@@ -65,7 +64,7 @@ static uint32_t ioGPIO_differ (void* _this, void* _dst)
 	struct ioGPIO* this = _this;
 	struct ioGPIO* dst = _dst;
 
-	return ((this->periphMem != dst->periphMem) || (this->direction != dst->direction) || (this->activeLevel != dst->activeLevel) ||
+	return ((this->periphMem != dst->periphMem) || (this->direction != dst->direction) ||
 			(this->port != dst->port) || (this->pin != dst->pin));
 }
 
@@ -83,7 +82,6 @@ static void* ioGPIO_copy (void* _this, void* _src)
 
 	this->periphMem = src->periphMem;
 	this->direction = src->direction;
-	this->activeLevel = src->activeLevel;
 	this->port = src->port;
 	this->pin = src->pin;
 
@@ -94,35 +92,35 @@ static void* ioGPIO_copy (void* _this, void* _src)
 
 static uint32_t ioGPIO_init (void* _this, va_list* va)
 {
-
+	return 0;
 }
 
 
 static uint32_t ioGPIO_deInit (void* _this)
 {
-
+	return 0;
 }
 
 
 static uint32_t ioGPIO_enable (void* _this)
 {
-
+	return 0;
 }
 
 
 static uint32_t ioGPIO_disable (void* _this)
 {
-
+	return 0;
 }
 
 
 static uint32_t ioGPIO_read (void* _this)
 {
-
+	return 0;
 }
 
 
 static uint32_t ioGPIO_write (void* _this, uint32_t data)
 {
-
+	return 0;
 }
