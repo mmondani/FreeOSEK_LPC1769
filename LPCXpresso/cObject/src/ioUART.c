@@ -69,12 +69,12 @@ static void* ioUART_ctor  (void* _this, va_list* va)
 	// Reserva memoria para los queues. Si se usa modo BLOCKING, solo hay queue de Rx.
 	if (mode(this) == IOUART_MODE_NON_BLOCKING)
 	{
-		queue = cObject_new(cQueue, CQUEUE_TYPE_FIFO, txLen, sizeof(uint8_t));
+		queue = cObject_new(cQueue, txLen, sizeof(uint8_t), CQUEUE_TYPE_FIFO);
 		assert(queue != (void*)0);
 		set_txQueue(this, queue);
 	}
 
-	queue = cObject_new(cQueue, CQUEUE_TYPE_FIFO, rxLen, sizeof(uint8_t));
+	queue = cObject_new(cQueue, rxLen, sizeof(uint8_t), CQUEUE_TYPE_FIFO);
 	assert(queue != (void*)0);
 	set_rxQueue(this, queue);
 
@@ -245,6 +245,9 @@ static uint32_t ioUART_writeBytes (void* _this, uint32_t len, uint8_t* data)
 				cBuffer_put(this->txQueue, (void*)(data+i));
 			}
 
+			// Se envía el primer caracter
+			ioUART_txHandler(this);
+
 			writtenBytes = len;
 		}
 		else
@@ -333,7 +336,7 @@ void ioUART_txHandler (void* _this)
 
 	if (cBuffer_getPending(this->txQueue))
 	{
-		cBuffer_remove(this->rxQueue, &data);
+		cBuffer_remove(this->txQueue, &data);
 		Chip_UART_SendByte(periphMem(this), data);
 	}
 

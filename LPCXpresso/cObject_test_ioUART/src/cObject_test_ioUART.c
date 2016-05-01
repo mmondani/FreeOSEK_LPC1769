@@ -29,6 +29,14 @@ void SysTick_Handler(void)
 	ioComm_writeBytes(uart3, sizeof ("Hola mundo\n\r"), str1);
 }
 
+void UART3_IRQHandler(void)
+{
+	if (ioComm_getInt(uart3, IOUART_INT_ID_TX))
+	{
+		ioUART_txHandler(uart3);
+	}
+}
+
 int main(void) {
 
 #if defined (__USE_LPCOPEN)
@@ -45,11 +53,14 @@ int main(void) {
 
     initMemHeap();
 
-    uart3 = cObject_new(ioUART, LPC_UART3, IOUART_BR_9600, IOUART_DATA_8BIT, IOUART_PAR_NONE, IOUART_STOP_1BIT, IOUART_MODE_BLOCKING, 50, 50);
+    uart3 = cObject_new(ioUART, LPC_UART3, IOUART_BR_9600, IOUART_DATA_8BIT, IOUART_PAR_NONE, IOUART_STOP_1BIT, IOUART_MODE_NON_BLOCKING, 50, 50);
     ioObject_init(uart3);
+    ioComm_intEnable(uart3, IOUART_INT_TX);
+
+    NVIC_SetPriority(UART3_IRQn, 1);
+    NVIC_EnableIRQ(UART3_IRQn);
+
     //ioUART_configFIFO(uart3, IOUART_FIFO_LEVEL0);
-
-
 
     SysTick_Config(SystemCoreClock / 10);
 

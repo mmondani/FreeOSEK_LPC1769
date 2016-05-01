@@ -44,6 +44,7 @@ static void* cQueue_ctor  (void* _this, va_list* va)
 {
 	// Constructor de la clase herada
 	struct cQueue* this = ((const struct cObject*) cStaticBuffer)->ctor (_this, va);
+	this->type = va_arg(*va, uint32_t);
 
 	this->ptrIn = 0;
 	this->ptrOut = 0;

@@ -7,7 +7,7 @@
 // ********************************************************************************
 // Instanciación de cQueue
 //
-// void* queue = cObject_new(cQueue, type, len, objectSize);
+// void* queue = cObject_new(cQueue, len, objectSize, type);
 // ********************************************************************************
 extern const void* cQueue;
 
