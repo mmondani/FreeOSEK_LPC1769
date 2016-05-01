@@ -21,12 +21,14 @@
 #include "cObject.h"
 #include "ioDigital.h"
 
-void* pinLed;
+void* pinLed1;
+void* pinLed2;
+void* pinSwitch1;
 
 
 void SysTick_Handler(void)
 {
-	ioDigital_toggle(pinLed);
+	ioDigital_toggle(pinLed1);
 }
 
 int main(void) {
@@ -45,14 +47,24 @@ int main(void) {
 
     initMemHeap();
 
-    pinLed = cObject_new(ioDigital, LPC_GPIO, IOGPIO_OUTPUT, 0, 22);
-    ioObject_init(pinLed);
+    pinLed1 = cObject_new(ioDigital, LPC_GPIO, IOGPIO_OUTPUT, 0, 22);
+    ioObject_init(pinLed1);
+
+    pinLed2 = cObject_new(ioDigital, LPC_GPIO, IOGPIO_OUTPUT, 0, 21);
+    ioObject_init(pinLed2);
+
+    pinSwitch1 = cObject_new(ioDigital, LPC_GPIO, IOGPIO_INPUT, 0, 3);
+    ioObject_init(pinLed2);
 
     SysTick_Config(SystemCoreClock / 20);
 
 
     while(1)
     {
+    	if (ioObject_read(pinSwitch1) == 1)
+    		ioObject_write(pinLed2, 1);
+    	else
+    		ioObject_write(pinLed2, 0);
     }
 
 
