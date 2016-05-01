@@ -11,7 +11,9 @@ static void* cStaticBuffer_put (void* _this, void* _object);
 static void* cStaticBuffer_remove (void* _this, void* _object);
 static void* cStaticBuffer_clear (void* _this);
 static void cStaticBuffer_at (void* _this, uint32_t pos, void* _object);
-
+static uint32_t cStaticBuffer_getFreeSpace (void* _this);
+static uint32_t cStaticBuffer_getPending (void* _this);
+static uint32_t cStaticBuffer_length (void* _this);
 
 
 // ********************************************************************************
@@ -26,7 +28,10 @@ static const struct cBuffer _cStaticBuffer = {{sizeof(struct cStaticBuffer),
 													cStaticBuffer_put,
 													cStaticBuffer_remove,
 													cStaticBuffer_clear,
-													cStaticBuffer_at};
+													cStaticBuffer_at,
+													cStaticBuffer_getFreeSpace,
+													cStaticBuffer_getPending,
+													cStaticBuffer_length};
 
 const void* cStaticBuffer = &_cStaticBuffer;
 // ********************************************************************************
@@ -67,7 +72,7 @@ static uint32_t cStaticBuffer_differ (void* _this, void* _dst)
 	int32_t res = 1;
 
 
-	if (this->len == dst->len)
+	if ( (this->len == dst->len) && (this->objectSize == dst->objectSize ))
 	{
 		res = memcmp(this, dst, this->len * this->objectSize);
 	}
@@ -127,4 +132,22 @@ static void* cStaticBuffer_clear (void* _this)
 static void cStaticBuffer_at (void* _this, uint32_t pos, void* _object)
 {
 
+}
+
+
+static uint32_t cStaticBuffer_getFreeSpace (void* _this)
+{
+	return len(_this);
+}
+
+
+static uint32_t cStaticBuffer_getPending (void* _this)
+{
+	return (len(_this));
+}
+
+
+static uint32_t cStaticBuffer_length (void* _this)
+{
+	return (len(_this));
 }

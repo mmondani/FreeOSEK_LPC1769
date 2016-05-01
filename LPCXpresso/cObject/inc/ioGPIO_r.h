@@ -14,8 +14,7 @@ struct ioGPIO
 	uint32_t pin;
 };
 
-// Macros de get y set para ser usados de forma privada por las clases que implementan
-// la interfaz ioGPIO
+// Macros de get y set para ser usados de forma privada por ioGPIO y las clases que la heredan
 #define periphMem(p)			(((const struct ioGPIO*)p)->periphMem)
 #define direction(p)			(((const struct ioGPIO*)p)->direction)
 #define port(p)					(((const struct ioGPIO*)p)->port)

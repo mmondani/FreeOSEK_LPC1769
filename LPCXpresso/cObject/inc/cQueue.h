@@ -5,16 +5,23 @@
 
 
 // ********************************************************************************
-// Instanciación de cWindow
+// Instanciación de cQueue
 //
-// void* window = cObject_new(cWindow, len, objectSize);
+// void* queue = cObject_new(cQueue, type, len, objectSize);
 // ********************************************************************************
-extern const void* cWindow;
-
+extern const void* cQueue;
 
 
 // ********************************************************************************
-// Métodos públicos de la clase cWindow : cStaticBuffer
+// Enumeraciones de la interfaz cQueue : cStaticBuffer
+// ********************************************************************************
+
+enum { CQUEUE_TYPE_FIFO = 0
+};
+
+
+// ********************************************************************************
+// Métodos públicos de la clase cQueue : cStaticBuffer
 // ********************************************************************************
 
 // ********************************************************************************

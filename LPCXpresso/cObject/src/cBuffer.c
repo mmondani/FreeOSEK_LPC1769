@@ -51,3 +51,46 @@ void cBuffer_at (void* _this, uint32_t pos, void* _object)
 		((*class)->at(_this, pos, _object));
 	}
 }
+
+
+uint32_t cBuffer_getFreeSpace (void* _this)
+{
+	const struct cBuffer* const * class = _this;
+	uint32_t num = 0;
+
+	if (_this && class && (*class)->getFreeSpace)
+	{
+		num = ((*class)->getFreeSpace(_this));
+	}
+
+	return num;
+}
+
+
+uint32_t cBuffer_getPending (void* _this)
+{
+	const struct cBuffer* const * class = _this;
+	uint32_t num = 0;
+
+	if (_this && class && (*class)->getPending)
+	{
+		num = ((*class)->getPending(_this));
+	}
+
+	return num;
+}
+
+
+uint32_t cBuffer_length (void* _this)
+{
+	const struct cBuffer* const * class = _this;
+	uint32_t num = 0;
+
+	if (_this && class && (*class)->length)
+	{
+		num = ((*class)->length(_this));
+	}
+
+	return num;
+}
+

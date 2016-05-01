@@ -1,6 +1,5 @@
 #include "cObject.h"
 #include "cObject_r.h"
-#include "memAlloc.h"
 
 
 void* cObject_new (const void* _class, ...)

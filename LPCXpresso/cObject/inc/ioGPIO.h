@@ -2,8 +2,6 @@
 #define IOGPIO_H
 
 #include "ioObject.h"
-#include <stdint.h>
-#include <string.h>
 
 
 // ********************************************************************************

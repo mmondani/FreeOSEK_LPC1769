@@ -59,4 +59,43 @@ void* cBuffer_clear (void* _this);
  */
 void cBuffer_at (void* _this, uint32_t pos, void* _object);
 
+
+/*
+ * cBuffer_getFreeSpace
+ *
+ * Devuelve la cantidad de espacio disponible en el buffer (Nota: no está dado en bytes,
+ * el tamaño del objeto almacenado es la unidad)
+ *
+ * 	-> _this: instancia de una clase que implementa cBuffer.
+ *
+ * 	<- Cantidad de lugar disponible.
+ */
+uint32_t cBuffer_getFreeSpace (void* _this);
+
+
+/*
+ * cBuffer_getPending
+ *
+ * Devuelve la cantidad de objetos que hay que extraer del buffer (Nota: no está dado en bytes,
+ * el tamaño del objeto almacenado es la unidad)
+ *
+ * 	-> _this: instancia de una clase que implementa cBuffer.
+ *
+ * 	<- Cantidad de objetos pendientes de extraer.
+ */
+uint32_t cBuffer_getPending (void* _this);
+
+
+/*
+ * cBuffer_length
+ *
+ * Devuelve la longitud del buffer (Nota: no está dado en bytes, el tamaño del objeto almacenado es la unidad)
+ *
+ * 	-> _this: instancia de una clase que implementa cBuffer.
+ *
+ * 	<- longitud del buffer
+ */
+uint32_t cBuffer_length (void* _this);
+
+
 #endif

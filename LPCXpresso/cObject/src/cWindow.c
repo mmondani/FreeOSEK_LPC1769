@@ -13,6 +13,9 @@ static void* cWindow_put (void* _this, void* _object);
 static void* cWindow_remove (void* _this, void* _object);
 static void* cWindow_clear (void* _this);
 static void cWindow_at (void* _this, uint32_t pos, void* _object);
+static uint32_t cWindow_getFreeSpace (void* _this);
+static uint32_t cWindow_getPending (void* _this);
+static uint32_t cWindow_length (void* _this);
 
 
 
@@ -28,7 +31,10 @@ static const struct cBuffer _cWindow = {{sizeof(struct cWindow),
 											cWindow_put,
 											cWindow_remove,
 											cWindow_clear,
-											cWindow_at};
+											cWindow_at,
+											cWindow_getFreeSpace,
+											cWindow_getPending,
+											cWindow_length};
 
 const void* cWindow = &_cWindow;
 // ********************************************************************************
@@ -139,9 +145,28 @@ static void cWindow_at (void* _this, uint32_t pos, void* _object)
 {
 	struct cWindow* this = _this;
 
-
 	assert((pos >= 0) && ( pos < len(this)));
 
-
 	memcpy(_object, (buffer(this) + objectSize(this) * pos), objectSize(this));
+}
+
+
+static uint32_t cWindow_getFreeSpace (void* _this)
+{
+	// En esta clase no tiene sentido hablar de espacio libre
+	return len(_this);
+}
+
+
+static uint32_t cWindow_getPending (void* _this)
+{
+	// En esta clase no tiene sentido hablar de cantidad de objetos pendientes.
+	return len(_this);
+}
+
+
+static uint32_t cWindow_length (void* _this)
+{
+	// Se llama a la implementación de la clase que herada
+	return ((const struct cBuffer*) cStaticBuffer)->length (_this);
 }
