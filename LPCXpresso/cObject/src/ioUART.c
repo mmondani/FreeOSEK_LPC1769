@@ -276,7 +276,18 @@ static uint32_t ioUART_writeBytes (void* _this, uint32_t len, uint8_t* data)
 
 static uint32_t ioUART_readBytes (void* _this, uint32_t len, uint8_t* data)
 {
-	return 0;
+	struct ioUART* this = _this;
+	uint8_t ch;
+	uint32_t bytesRead = 0;
+
+	if (cBuffer_getPending(this->rxQueue))
+	{
+		cBuffer_remove(this->rxQueue, &ch);
+		*(data+bytesRead) = ch;
+		bytesRead ++;
+	}
+
+	return bytesRead;
 }
 
 
@@ -325,7 +336,15 @@ void ioUART_configFIFO (void* _this, uint32_t config)
 
 void ioUART_rxHandler (void* _this)
 {
+	struct ioUART* this = _this;
+	uint8_t ch;
 
+	// Se lee toda la data que haya en el FIFO de Rx de la UART
+	while (Chip_UART_ReadLineStatus(periphMem(this)) & UART_LSR_RDR)
+	{
+		ch = Chip_UART_ReadByte(periphMem(this));
+		cBuffer_put(this->rxQueue, &ch);
+	}
 }
 
 
@@ -339,8 +358,6 @@ void ioUART_txHandler (void* _this)
 		cBuffer_remove(this->txQueue, &data);
 		Chip_UART_SendByte(periphMem(this), data);
 	}
-
-	// Hay que apagar TX si no hay que mandar??????
 }
 
 
