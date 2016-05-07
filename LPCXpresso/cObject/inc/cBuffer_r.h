@@ -5,6 +5,8 @@
 
 /**
  * @file 		cBuffer_r.h
+ * @author 		Mariano Mondan
+
  * @brief 		Estructura interna de la interfaz cBuffer. Extiende a cObject
  * @details     Este archivo no debe ser incluido en la aplicación del usuario.
  */
@@ -21,7 +23,7 @@
  */
 struct cBuffer
 {
-	struct cObject _;											///< Estructura cObject que extiende la interfaz cBuffer.
+	struct cObject _;											///< Estructura cObject que es extendida por la interfaz cBuffer.
 	void* (*put) (void* _this, void* _object);					///< Puntero a put de la clase que implemente la interfaz cBuffer.
 	void* (*remove) (void* _this, void* _object);				///< Puntero a remove de la clase que implemente la interfaz cBuffer.
 	void* (*clear) (void* _this);								///< Puntero a clear de la clase que implemente la interfaz cBuffer.

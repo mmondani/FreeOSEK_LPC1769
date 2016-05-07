@@ -1,3 +1,16 @@
+/**
+ * @addtogroup grp_ioGPIO ioGPIO
+ * @{
+ */
+
+/**
+ * @file ioGPIO_r.h
+ * @author Mariano Mondani
+ *
+ * @brief Estructura interna de la clase ioGPIO.
+ * @details Este archivo no debe ser incluido en la aplicación del usuario.
+ */
+
 #ifndef IOGPIO_R_H
 #define IOGPIO_R_H
 
@@ -5,16 +18,28 @@
 #include "ioObject_r.h"
 
 
+// ********************************************************************************
+/**
+ * @brief      Estructura de la clase ioGPIO.
+ */
 struct ioGPIO
 {
-	const void* class;
-	void* periphMem;
-	uint32_t direction;
-	uint32_t port;
-	uint32_t pin;
+	const void* class;			///< Puntero a la interfaz @ref grp_ioObject
+	void* periphMem;			///< Dirección base de memoria del periférico.
+	uint32_t direction;			///< Dirección del GPIO. Ver @ref ioGPIO_Direction.
+	uint32_t port;				///< Número de puerto en el que se encuentra el GPIO.
+	uint32_t pin;				///< Número de pin dentro del puerto.
 };
 
-// Macros de get y set para ser usados de forma privada por ioGPIO y las clases que la heredan
+// ********************************************************************************
+
+
+// ********************************************************************************
+/**
+ * @name Macros privados
+ * @brief Macros de get y set para ser usados de forma privada por la clase ioGPIO y por las que la heredan.
+ * @{
+*/
 #define periphMem(p)			(((const struct ioGPIO*)p)->periphMem)
 #define direction(p)			(((const struct ioGPIO*)p)->direction)
 #define port(p)					(((const struct ioGPIO*)p)->port)
@@ -26,5 +51,10 @@ struct ioGPIO
 #define set_pin(p, v)				(((struct ioGPIO*)p)->pin = (v))
 
 
+///@}
+// ********************************************************************************
 
 #endif
+
+
+///@}

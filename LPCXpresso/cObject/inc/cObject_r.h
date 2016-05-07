@@ -16,6 +16,8 @@
 #include <stdint.h>
 #include <stdarg.h>
 
+
+// ********************************************************************************
 /**
  * @struct     cObject
  * @brief      Estructura de la interfaz cObject.
@@ -30,13 +32,14 @@ struct cObject
 	void (*display) (void* _this);					///< Puntero a display de la clase que implemente la interfaz cObject
 	void* (*copy) (void* _this, void* _src);		///< Puntero a copy de la clase que implemente la interfaz cObject
 };
-
+// ********************************************************************************
 
 
 
 //#define NO_ASSERT
 
 
+// ********************************************************************************
 /**
  * @brief      Permite evaluar una expresión. En caso de ser falsa, el programa se detiene
  * @details    Para habilitar la función assert() se debe comentar la línea @code #define NO_ASSERT @endcode
@@ -55,5 +58,7 @@ struct cObject
 #endif
 
 #endif
+
+// ********************************************************************************
 
 /** @}*/

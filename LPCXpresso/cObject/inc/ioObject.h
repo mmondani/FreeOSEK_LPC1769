@@ -1,3 +1,19 @@
+/**
+ * @addtogroup grp_ioObject ioObject
+ *
+ * @brief Interfaz que extiende a @ref grp_cObject.
+ * @details Esta interfaz tiene los métodos básicos que puede necesitar cualquier clase de entrada/salida.
+ * @{
+ */
+
+/**
+ * @file ioObject.h
+ *
+ * @brief Métodos de la interfaz ioObject.
+ * @author Mariano Mondani
+ */
+
+
 #ifndef IOOBJECT_H_
 #define IOOBJECT_H_
 
@@ -7,83 +23,81 @@
 
 
 
-// ********************************************************************************
-// Métodos públicos de la interfaz ioObject : cObject
-// ********************************************************************************
+/**
+ * @name Métodos de la interfaz ioObject
+ * @{
+ */
 
 
-/*
- * ioObject_init
+/**
+ * @brief      Inicializa el hardware relacionado con el ioObject.
  *
- * Inicializa el hardware relacionado con el ioObject.
+ * @param      _this  instancia de una clase que implementa a ioObject.
  *
- * 	-> _this: instancia de una clase que implementa a ioObject.
- *
- * 	<- Duelve 0 si la inicialización fue exitosa. Otro valor si hubo un error.
+ * @return     0 si la inicialización fue exitosa. Otro valor si hubo un error.
  */
 uint32_t ioObject_init (void* _this);
 
 
-/*
- * ioObject_deInit
+
+/**
+ * @brief      Des-inicializa el hardware asociado al iObject.
  *
- * Des-inicializa el hardware asociado al iObject.
+ * @param      _this  instancia de una clase que implementa a ioObject.
  *
- * 	-> _this: instancia de una clase que implementa a ioObject.
- *
- * 	<- Duelve 0 en caso de éxito. Otro valor si hubo un error.
+ * @return     0 en caso de éxito. Otro valor si hubo un error.
  */
 uint32_t ioObject_deInit (void* _this);
 
 
-/*
- * ioObject_enable
+
+/**
+ * @brief      Habilita el periférico.
  *
- * Habilita el periférico.
+ * @param      _this  instancia de una clase que implementa a ioObject.
  *
- * 	-> _this: instancia de una clase que implementa a ioObject.
- *
- * 	<- Duelve 0 en caso de éxito. Otro valor si hubo un error.
+ * @return     0 en caso de éxito. Otro valor si hubo un error.
  */
 uint32_t ioObject_enable (void* _this);
 
 
-/*
- * ioObject_disable
+
+/**
+ * @brief      Deshabilita el periférico.
  *
- * Deshabilita el periférico.
+ * @param      _this  instancia de una clase que implementa a ioObject.
  *
- * 	-> _this: instancia de una clase que implementa a ioObject.
- *
- * 	<- Duelve 0 en caso de éxito. Otro valor si hubo un error.
+ * @return     0 en caso de éxito. Otro valor si hubo un error.
  */
 uint32_t ioObject_disable (void* _this);
 
 
-/*
- * ioObject_read
+
+/**
+ * @brief      Lee un valor desde el periférico.
  *
- * Lee un valor desde el periférico.
+ * @param      _this  instancia de una clase que implementa a ioObject.
  *
- * 	-> _this: instancia de una clase que implementa a ioObject.
- *
- * 	<- Valor leido.
+ * @return     Valor leido.
  */
 uint32_t ioObject_read (void* _this);
 
 
-/*
- * ioObject_write
+
+/**
+ * @brief      Escribe un valor al periférico.
  *
- * Escribe un valor al periférico.
+ * @param      _this  instancia de una clase que implementa a ioObject.
+ * @param	   data   valor a escribir.
  *
- * 	-> _this: instancia de una clase que implementa a ioObject.
- * 	-> data: valor a escribir.
- *
- * 	<- Duelve 0 en caso de éxito. Otro valor si hubo un error.
+ * @return     0 en caso de éxito. Otro valor si hubo un error.
  */
 uint32_t ioObject_write (void* _this, uint32_t data);
 
-// ********************************************************************************
+
+///@}
 
 #endif
+
+
+///@}

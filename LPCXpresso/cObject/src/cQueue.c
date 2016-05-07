@@ -1,3 +1,10 @@
+/**
+ * @file cQueue.c
+ *
+ * @brief Implementación de los métodos de la clase cQueue.
+ */
+
+
 #include <cQueue.h>
 #include <cQueue_r.h>
 #include <stdio.h>
@@ -44,7 +51,6 @@ static void* cQueue_ctor  (void* _this, va_list* va)
 {
 	// Constructor de la clase herada
 	struct cQueue* this = ((const struct cObject*) cStaticBuffer)->ctor (_this, va);
-	this->type = va_arg(*va, uint32_t);
 
 	this->ptrIn = 0;
 	this->ptrOut = 0;
@@ -72,12 +78,6 @@ static uint32_t cQueue_differ (void* _this, void* _dst)
 	// Se llama a la implementación de differ de la clase superior
 	res = ((const struct cObject*) cStaticBuffer)->differ (_this, _dst);
 
-	// Se comparan los elementos que agrega la clase cQueue
-	if (res == 0)
-	{
-		return (this->type != dst->type);
-	}
-
 	return res;
 }
 
@@ -99,7 +99,6 @@ static void* cQueue_copy (void* _this, void* _src)
 	// Si hubiera otros elementos que copiar se copian.
 	this->ptrIn = src->ptrIn;
 	this->ptrOut = src->ptrOut;
-	this->type = src->type;
 
 	return this;
 }

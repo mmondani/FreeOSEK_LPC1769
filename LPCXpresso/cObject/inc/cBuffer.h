@@ -1,12 +1,13 @@
 /**
  * @addtogroup grp_cBuffer cBuffer
- * @brief Interfaz que extiende a cObject.
+ * @brief Interfaz que extiende a @ref grp_cObject.
  * @details Esta interfaz tiene los métodos básicos que puede necesitar cualquier clase de buffer.
  * @{
  */
 
 /**
  * @file cBuffer.h
+ * @author Mariano Mondani
  *
  * @brief Métodos de la interfaz cBuffer.
  * @author Mariano Mondani

@@ -1,3 +1,10 @@
+/**
+ * @file ioGPIO.c
+ * @author Mariano Mondani
+ *
+ * @brief Implementación de los métodos de la clase ioGPIO.
+ */
+
 #include "ioGPIO.h"
 #include "ioGPIO_r.h"
 

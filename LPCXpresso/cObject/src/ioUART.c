@@ -1,3 +1,10 @@
+/**
+ * @file ioUART.c
+ * @author Mariano Mondani
+ *
+ * @brief Implementación de los métodos de la clase ioUART.
+ */
+
 #include "ioUART.h"
 #include "ioUART_r.h"
 
@@ -69,12 +76,12 @@ static void* ioUART_ctor  (void* _this, va_list* va)
 	// Reserva memoria para los queues. Si se usa modo BLOCKING, solo hay queue de Rx.
 	if (mode(this) == IOUART_MODE_NON_BLOCKING)
 	{
-		queue = cObject_new(cQueue, txLen, sizeof(uint8_t), CQUEUE_TYPE_FIFO);
+		queue = cObject_new(cQueue, txLen, sizeof(uint8_t));
 		assert(queue != (void*)0);
 		set_txQueue(this, queue);
 	}
 
-	queue = cObject_new(cQueue, rxLen, sizeof(uint8_t), CQUEUE_TYPE_FIFO);
+	queue = cObject_new(cQueue, rxLen, sizeof(uint8_t));
 	assert(queue != (void*)0);
 	set_rxQueue(this, queue);
 

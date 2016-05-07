@@ -1,3 +1,10 @@
+/**
+ * @file ioObject.c
+ * @author Mariano Mondani
+ *
+ * @brief Implementación de los métodos de la interfaz ioObject.
+ */
+
 #include "ioObject.h"
 #include "ioObject_r.h"
 
@@ -5,6 +12,9 @@
 
 uint32_t ioObject_init (void* _this)
 {
+	/**
+	 * Este método llama a la función init de la clase que implementa la interfaz ioObject
+	 */
 	const struct ioObject* const * class = _this;
 	uint32_t res = 1;
 
@@ -19,6 +29,9 @@ uint32_t ioObject_init (void* _this)
 
 uint32_t ioObject_deInit (void* _this)
 {
+	/**
+	 * Este método llama a la función deInit de la clase que implementa la interfaz ioObject
+	 */
 	const struct ioObject* const * class = _this;
 	uint32_t res = 1;
 
@@ -33,6 +46,9 @@ uint32_t ioObject_deInit (void* _this)
 
 uint32_t ioObject_enable (void* _this)
 {
+	/**
+	 * Este método llama a la función enable de la clase que implementa la interfaz ioObject
+	 */
 	const struct ioObject* const * class = _this;
 	uint32_t res = 1;
 
@@ -47,6 +63,9 @@ uint32_t ioObject_enable (void* _this)
 
 uint32_t ioObject_disable (void* _this)
 {
+	/**
+	 * Este método llama a la función disable de la clase que implementa la interfaz ioObject
+	 */
 	const struct ioObject* const * class = _this;
 	uint32_t res = 1;
 
@@ -61,6 +80,9 @@ uint32_t ioObject_disable (void* _this)
 
 uint32_t ioObject_read (void* _this)
 {
+	/**
+	 * Este método llama a la función read de la clase que implementa la interfaz ioObject
+	 */
 	const struct ioObject* const * class = _this;
 	uint32_t res = 1;
 
@@ -75,6 +97,9 @@ uint32_t ioObject_read (void* _this)
 
 uint32_t ioObject_write (void* _this, uint32_t data)
 {
+	/**
+	 * Este método llama a la función write de la clase que implementa la interfaz ioObject
+	 */
 	const struct ioObject* const * class = _this;
 	uint32_t res = 1;
 

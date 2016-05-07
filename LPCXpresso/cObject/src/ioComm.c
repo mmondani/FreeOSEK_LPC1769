@@ -1,3 +1,10 @@
+/**
+ * @file ioComm.c
+ * @author Mariano Mondani
+ *
+ * @brief Implementación de los métodos de la interfaz ioComm.
+ */
+
 #include "ioComm.h"
 #include "ioComm_r.h"
 

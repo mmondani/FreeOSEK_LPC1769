@@ -17,6 +17,7 @@
 
 
 
+// ********************************************************************************
 /**
  * @brief      Estructura de la clase cStaticBuffer.
  */
@@ -28,7 +29,10 @@ struct cStaticBuffer
 	size_t objectSize;		///< Tamaño, en bytes, del objeto que debe contener el buffer.
 };
 
+// ********************************************************************************
 
+
+// ********************************************************************************
 /**
  * @name Macros privados
  * @brief Macros de get y set para ser usados de forma privada por la clase cStaticBuffer y por las que la heredan.
@@ -42,7 +46,9 @@ struct cStaticBuffer
 #define set_len(p, v)				(((struct cStaticBuffer*)p)->len = (v))
 #define set_objectSize(p, v)		(((struct cStaticBuffer*)p)->objectSize = (v))
 
+
 ///@}
+// ********************************************************************************
 
 
 #endif

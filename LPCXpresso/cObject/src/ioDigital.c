@@ -1,3 +1,11 @@
+/**
+ * @file ioDigital.c
+ * @author Mariano Mondani
+ *
+ * @brief Implementación de los métodos de la clase ioDigital.
+ */
+
+
 #include "ioDigital.h"
 #include "ioDigital_r.h"
 

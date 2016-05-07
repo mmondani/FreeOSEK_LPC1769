@@ -1,7 +1,7 @@
 /**
  * @addtogroup grp_cStaticBuffer cStaticBuffer
  *
- * @brief Implementa la interfaz cBuffer.
+ * @brief Implementa la interfaz @ref grp_cBuffer.
  * @details Es un buffer de tamaño fijo. Esta clase sirve de base para tipos más específicos de buffer.
  * La mayoría de los métodos de la interfaz cBuffer no están implementados ya que no se modela un tipo particular de buffer.
  * @{
@@ -18,6 +18,8 @@
 #include <stdint.h>
 #include <string.h>
 
+
+// ********************************************************************************
 /**
  * @var cStaticBuffer
  * @brief Nombre de la clase.
@@ -30,11 +32,6 @@
  * @param objectSize	tamaño, en bytes, de cada objeto que contiene el buffer.
  */
 extern const void* cStaticBuffer;
-
-
-// ********************************************************************************
-// Métodos públicos de la clase cStaticBuffer : cBuffer
-// ********************************************************************************
 
 // ********************************************************************************
 

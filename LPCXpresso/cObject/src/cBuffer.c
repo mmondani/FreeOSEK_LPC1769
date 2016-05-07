@@ -1,5 +1,6 @@
 /**
  * @file cBuffer.c
+ * @author Mariano Mondani
  *
  * @brief Implementación de los métodos de la interfaz cBuffer.
  */
