@@ -1,3 +1,9 @@
+/**
+ * @file cBuffer.c
+ *
+ * @brief Implementación de los métodos de la interfaz cBuffer.
+ */
+
 #include "cBuffer.h"
 #include "cBuffer_r.h"
 
@@ -5,6 +11,9 @@
 
 void* cBuffer_put (void* _this, void* _object)
 {
+	/**
+	 * Este método llama a la función put de la clase que implementa la interfaz cBuffer
+	 */
 	const struct cBuffer* const * class = _this;
 
 	if (_this && class && (*class)->put)
@@ -18,6 +27,9 @@ void* cBuffer_put (void* _this, void* _object)
 
 void* cBuffer_remove (void* _this, void* _object)
 {
+	/**
+	 * Este método llama a la función remove de la clase que implementa la interfaz cBuffer
+	 */
 	const struct cBuffer* const * class = _this;
 
 	if (_this && class && (*class)->remove)
@@ -31,6 +43,9 @@ void* cBuffer_remove (void* _this, void* _object)
 
 void* cBuffer_clear (void* _this)
 {
+	/**
+	 * Este método llama a la función clear de la clase que implementa la interfaz cBuffer
+	 */
 	const struct cBuffer* const * class = _this;
 
 	if (_this && class && (*class)->clear)
@@ -44,6 +59,9 @@ void* cBuffer_clear (void* _this)
 
 void cBuffer_at (void* _this, uint32_t pos, void* _object)
 {
+	/**
+	 * Este método llama a la función at de la clase que implementa la interfaz cBuffer
+	 */
 	const struct cBuffer* const * class = _this;
 
 	if (_this && class && (*class)->at)
@@ -55,6 +73,9 @@ void cBuffer_at (void* _this, uint32_t pos, void* _object)
 
 uint32_t cBuffer_getFreeSpace (void* _this)
 {
+	/**
+	 * Este método llama a la función getFreeSpace de la clase que implementa la interfaz cBuffer
+	 */
 	const struct cBuffer* const * class = _this;
 	uint32_t num = 0;
 
@@ -69,6 +90,9 @@ uint32_t cBuffer_getFreeSpace (void* _this)
 
 uint32_t cBuffer_getPending (void* _this)
 {
+	/**
+	 * Este método llama a la función getPending de la clase que implementa la interfaz cBuffer
+	 */
 	const struct cBuffer* const * class = _this;
 	uint32_t num = 0;
 
@@ -83,6 +107,9 @@ uint32_t cBuffer_getPending (void* _this)
 
 uint32_t cBuffer_length (void* _this)
 {
+	/**
+	 * Este método llama a la función length de la clase que implementa la interfaz cBuffer
+	 */
 	const struct cBuffer* const * class = _this;
 	uint32_t num = 0;
 
@@ -93,4 +120,3 @@ uint32_t cBuffer_length (void* _this)
 
 	return num;
 }
-

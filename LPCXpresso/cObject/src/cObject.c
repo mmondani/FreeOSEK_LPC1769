@@ -1,9 +1,19 @@
+/**
+ * @file cObject.c
+ *
+ * @brief Implementación de los métodos de la interfaz cObject.
+ */
+
 #include "cObject.h"
 #include "cObject_r.h"
 
 
 void* cObject_new (const void* _class, ...)
 {
+	/**
+	 * Este método llama al constructor de la clase que implementa la interfaz cBuffer
+	 */
+
 	const struct cObject* class = _class;
 
 	void* p = memAlloc(class->size);
@@ -25,6 +35,10 @@ void* cObject_new (const void* _class, ...)
 
 void cObject_delete (void* _this)
 {
+	/**
+	 * Este método llama al destructor put de la clase que implementa la interfaz cBuffer
+	 */
+
 	const struct cObject** class = _this;
 
 	if (_this && class && (*class)->dtor)
@@ -38,6 +52,10 @@ void cObject_delete (void* _this)
 
 uint32_t cObject_differ (void* _this, void* _dst)
 {
+	/**
+	 * Este método llama a la función differ de la clase que implementa la interfaz cBuffer
+	 */
+
 	const struct cObject* const * class = _this;
 
 	if (_this && class && (*class)->differ)
@@ -50,6 +68,10 @@ uint32_t cObject_differ (void* _this, void* _dst)
 
 void cObject_display (void* _this)
 {
+	/**
+	 * Este método llama a la función display de la clase que implementa la interfaz cBuffer
+	 */
+
 	const struct cObject* const * class = _this;
 
 	if (_this && class && (*class)->display)
@@ -61,6 +83,10 @@ void cObject_display (void* _this)
 
 void* cObject_copy (void* _this, void* _src)
 {
+	/**
+	 * Este método llama a la función copy de la clase que implementa la interfaz cBuffer
+	 */
+
 	const struct cObject* const * class = _this;
 	void* p = 0;
 
@@ -72,3 +98,4 @@ void* cObject_copy (void* _this, void* _src)
 
 	return p;
 }
+

@@ -1,3 +1,17 @@
+/**
+ * @addtogroup grp_cBuffer cBuffer
+ * @brief Interfaz que extiende a cObject.
+ * @details Esta interfaz tiene los métodos básicos que puede necesitar cualquier clase de buffer.
+ * @{
+ */
+
+/**
+ * @file cBuffer.h
+ *
+ * @brief Métodos de la interfaz cBuffer.
+ * @author Mariano Mondani
+ */
+
 #ifndef CBUFFER_H_
 #define CBUFFER_H_
 
@@ -5,97 +19,100 @@
 #include "cObject.h"
 
 
-// ********************************************************************************
-// Métodos públicos de la interfaz cBuffer : cObject
-// ********************************************************************************
+/**
+ * @name Métodos de la interfaz cBuffer
+ * @{
+ */
 
 
-/*
- * cBuffer_put
+
+/**
+ * @brief      Agrega un elemento del buffer _this.
  *
- * Agrega un elemento del buffer _this.
+ * @param      _this    buffer al que agregar el elemento _object.
+ * @param      _object  elemento a agregar.
  *
- * 	-> _this: buffer al que agregar el elemento _object.
- * 	-> _object: elemento a agregar.
- *
- * 	<- Puntero al buffer _this. Permite concatenar el llamado de funciones.
+ * @return     Puntero al buffer _this. Permite concatenar el llamado de funciones.
  */
 void* cBuffer_put (void* _this, void* _object);
 
 
-/*
- * cBuffer_remove
+
+/**
+ * @brief      Elimina un elemento del buffer _this.
  *
- * Elimina un elemento del buffer _this.
+ * @param      _this    buffer del que se elimina un elemento.
+ * @param      _object  objeto que se quiere eliminar.
  *
- * 	-> _this: buffer del que se elimina un elemento.
- *
- * 	<- Puntero al buffer _this. Permite concatenar el llamado de funciones.
+ * @return     Puntero al buffer _this. Permite concatenar el llamado de funciones.
  */
 void* cBuffer_remove (void* _this, void* _object);
 
 
-/*
- * cBuffer_clear
+
+/**
+ * @brief      Limpia el buffer _this.
  *
- * Limpia el buffer _this.
+ * @param      _this  buffer a limpiar.
  *
- * 	-> _this: buffer a limpiar.
- *
- * 	<- Puntero al buffer _this. Permite concatenar el llamado de funciones.
+ * @return     Puntero al buffer _this. Permite concatenar el llamado de funciones.
  */
 void* cBuffer_clear (void* _this);
 
 
-/*
- * cBuffer_at
+
+/**
+ * @brief      Devuelve el elemento en la posición pos del buffer _this.
  *
- * Devuelve el elemento en la posición pos del buffer _this.
- *
- * 	-> _this: buffer.
- * 	-> pos: posición del elemento a devolver. Se numera desde 0.
- * 	-> _object: elemento en la posición pos del buffer _this.
- *
+ * @param      _this    buffer en el que buscar el elemento
+ * @param[in]  pos      posición del elemento a devolver. Se numera desde 0.
+ * @param      _object  elemento en la posición pos del buffer _this.
  */
 void cBuffer_at (void* _this, uint32_t pos, void* _object);
 
 
-/*
- * cBuffer_getFreeSpace
+
+
+/**
+ * @brief      Devuelve la cantidad de espacio disponible en el buffer.
  *
- * Devuelve la cantidad de espacio disponible en el buffer (Nota: no está dado en bytes,
- * el tamaño del objeto almacenado es la unidad)
+ * @details    La cantidad de espacio no está dada en bytes, el tamaño del objeto almacenado es la unidad.
  *
- * 	-> _this: instancia de una clase que implementa cBuffer.
+ * @param      _this  instancia de una clase que implementa cBuffer.
  *
- * 	<- Cantidad de lugar disponible.
+ * @return     Cantidad de lugar disponible
  */
 uint32_t cBuffer_getFreeSpace (void* _this);
 
 
-/*
- * cBuffer_getPending
+
+/**
+ * @brief      Devuelve la cantidad de objetos que hay que extraer del buffer.
  *
- * Devuelve la cantidad de objetos que hay que extraer del buffer (Nota: no está dado en bytes,
- * el tamaño del objeto almacenado es la unidad)
+ * @details    La cantidad no está dada en bytes, el tamaño del objeto almacenado es la unidad.
  *
- * 	-> _this: instancia de una clase que implementa cBuffer.
+ * @param      _this  instancia de una clase que implementa cBuffer.
  *
- * 	<- Cantidad de objetos pendientes de extraer.
+ * @return     Cantidad de objetos pendientes de extraer.
  */
 uint32_t cBuffer_getPending (void* _this);
 
 
-/*
- * cBuffer_length
+
+/**
+ * @brief      Devuelve la longitud del buffer
  *
- * Devuelve la longitud del buffer (Nota: no está dado en bytes, el tamaño del objeto almacenado es la unidad)
+ * @details    La longitud no está dada en bytes, el tamaño del objeto almacenado es la unidad.
  *
- * 	-> _this: instancia de una clase que implementa cBuffer.
+ * @param      _this  instancia de una clase que implementa cBuffer.
  *
- * 	<- longitud del buffer
+ * @return     longitud del buffer
  */
 uint32_t cBuffer_length (void* _this);
 
 
+ /// @}
+
 #endif
+
+/** @}*/

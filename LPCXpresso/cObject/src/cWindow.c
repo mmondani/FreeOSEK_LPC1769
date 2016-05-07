@@ -1,3 +1,10 @@
+/**
+ * @file cStaticBuffer.c
+ *
+ * @brief Implementación de los métodos de la clase cWindow.
+ */
+
+
 #include "cWindow.h"
 #include "cWindow_r.h"
 #include <stdio.h>

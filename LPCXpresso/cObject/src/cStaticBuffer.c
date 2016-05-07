@@ -1,5 +1,13 @@
+/**
+ * @file cStaticBuffer.c
+ *
+ * @brief Implementación de los métodos de la clase cStaticBuffer.
+ */
+
+
 #include "cStaticBuffer.h"
 #include "cStaticBuffer_r.h"
+
 
 
 static void* cStaticBuffer_ctor  (void* _this, va_list* va);
@@ -32,6 +40,7 @@ static const struct cBuffer _cStaticBuffer = {{sizeof(struct cStaticBuffer),
 													cStaticBuffer_getFreeSpace,
 													cStaticBuffer_getPending,
 													cStaticBuffer_length};
+
 
 const void* cStaticBuffer = &_cStaticBuffer;
 // ********************************************************************************
