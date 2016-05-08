@@ -41,7 +41,7 @@ struct ioUART
 // ********************************************************************************
 /**
  * @name Macros privados
- * @brief Macros de get y set para ser usados de forma privada por la clase ioGPIO y por las que la heredan.
+ * @brief Macros de get y set para ser usados de forma privada por la clase ioUART y por las que la heredan.
  * @{
 */
 #define periphMem(p)			(((const struct ioUART*)p)->periphMem)

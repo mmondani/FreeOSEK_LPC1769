@@ -24,7 +24,7 @@ static uint32_t ioGPIO_write (void* _this, uint32_t data);
 
 
 // ********************************************************************************
-// Declaración de la clase cStaticBuffer
+// Declaración de la clase ioGPIO
 // ********************************************************************************
 static const struct ioObject _ioGPIO = {{sizeof(struct ioGPIO),
 												ioGPIO_ctor,
