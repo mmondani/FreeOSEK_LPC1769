@@ -126,7 +126,7 @@ static uint32_t ioSPI_init (void* _this)
 		Chip_IOCON_PinMux(LPC_IOCON, 0, 17, IOCON_MODE_INACT, IOCON_FUNC2);		// P0.17: MISO
 		Chip_IOCON_PinMux(LPC_IOCON, 0, 18, IOCON_MODE_INACT, IOCON_FUNC2);		// P0.18: MOSI
 	}
-	else if (periphMem(this) == LPC_SSP0)
+	else if (periphMem(this) == LPC_SSP1)
 	{
 		Chip_IOCON_PinMux(LPC_IOCON, 0, 7, IOCON_MODE_INACT, IOCON_FUNC2);		// P0.7: SCK
 		Chip_IOCON_PinMux(LPC_IOCON, 0, 6, IOCON_MODE_INACT, IOCON_FUNC2);		// P0.6: SSEL
@@ -186,7 +186,7 @@ static uint32_t ioSPI_read (void* _this)
 	Chip_SSP_SendFrame(periphMem(this), 0xFFFF);
 
 	// Espera hasta recibir el dato.
-	while (Chip_SSP_GetStatus(periphMem(this), SSP_STAT_RNE) == SET);
+	while (Chip_SSP_GetStatus(periphMem(this), SSP_STAT_RNE) == RESET);
 
 	// Se lee el dato recibido
 	return ( Chip_SSP_ReceiveFrame(periphMem(this)) );
@@ -201,12 +201,14 @@ static uint32_t ioSPI_write (void* _this, uint32_t data)
 	// Se limpia el Status del SSP
 	Chip_SSP_ClearIntPending(periphMem(this), SSP_INT_CLEAR_BITMASK);
 
-	// Se envía un dato dummy para recibir.
-	Chip_SSP_SendFrame(periphMem(this), 0xFFFF);
+	// Se envía un dato
+	Chip_SSP_SendFrame(periphMem(this), data);
 
-	// Espera hasta enviar el dato.
-	while (Chip_SSP_GetStatus(periphMem(this), SSP_STAT_TFE) == RESET);
+	// Espera hasta recibir el dato.
+	while (Chip_SSP_GetStatus(periphMem(this), SSP_STAT_RNE) == RESET);
 
+	// Limpia el buffer de Rx
+	Chip_SSP_ReceiveFrame(periphMem(this));
 
 	return 0;
 }

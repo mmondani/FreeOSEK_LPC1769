@@ -54,7 +54,7 @@ int main(void) {
     ioObject_init(pinLed2);
 
     pinSwitch1 = cObject_new(ioDigital, LPC_GPIO, IOGPIO_INPUT, 0, 3);
-    ioObject_init(pinLed2);
+    ioObject_init(pinSwitch1);
 
     SysTick_Config(SystemCoreClock / 20);
 
